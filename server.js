@@ -19,6 +19,15 @@ var configDB = require('./config/database.js');
 
 var db
 
+// import pkg from "@googlemaps/js-api-loader"
+// var { Loader } = pkg
+// const loader = new Loader({
+//   apiKey: "AIzaSyB7PigA3KZAJa5hqRGglC_uHD9g2BBbgME",
+//   version: "weekly",
+// });
+
+
+
 // configuration ===============================================================
 mongoose.connect(configDB.url, (err, database) => {
   if (err) return console.log(err)

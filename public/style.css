@@ -13,7 +13,6 @@ body{
   align-items: center;
 }
 div{
-  background: black;
 }
 img{
   height: 200px;
@@ -24,15 +23,17 @@ div{
   justify-content: center;
   align-items: center;
   padding: 20px;
+  padding-bottom: 0px;
 }
 .btn-default{
   background: rgba(0, 0, 0, 0.248);
   border: white 1px dotted;
   border-radius: 5px;
   padding: 5px;
-  margin-top: 15px;
+  margin: 15px;
 }
-.btn-default a{
-  margin-left: 15px;
+#map{
+  height: 400px;
+  width: 100%;
 }
 .fa-trash:before{content:'\f00d'}
