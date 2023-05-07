@@ -4,7 +4,7 @@ module.exports = function(app, passport, db) {
 
     // show the home page (will also have our login links)
     app.get('/', function(req, res) {
-        res.render('index.ejs');
+        res.render('landing.ejs');
     });
 
     // app.get('/styles.css', (req, res) => {
@@ -14,24 +14,34 @@ module.exports = function(app, passport, db) {
     
 
     // PROFILE SECTION =========================
-    app.get('/profile', isLoggedIn, function(req, res) {
+    app.get('/home', isLoggedIn, function(req, res) {
         db.collection('entries').find({user: req.user.local.email}).toArray((err, result) => {
           if (err) return console.log(err)
-          res.render('profile.ejs', {
+          res.render('home.ejs', {
             user : req.user,
             entries: ''
           })
         })
     });
-    app.get('/entries', isLoggedIn, function(req, res) {
+    app.get('/map', isLoggedIn, function(req, res) {
       db.collection('entries').find().toArray((err, result) => {
         if (err) return console.log(err)
-        res.render('entries.ejs', {
+        res.render('map.ejs', {
           user : req.user,
           entries: result
         })
       })
-  });
+    });
+    app.get('/post', isLoggedIn, function(req, res) {
+      db.collection('entries').find({user: req.user.local.email, password: req.user.local.email}).toArray((err, result) => {
+        if (err) return console.log(err)
+        res.render('post.ejs', {
+          user : req.user,
+          password : req.password,
+          entries: result
+        })
+      })
+    });
 
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
@@ -51,7 +61,7 @@ module.exports = function(app, passport, db) {
           db.collection('entries').insertOne({user: req.user.local.email, password:req.user.local.password, date: req.body.date, body: req.body.body, place: req.body.place}, (err, result) => {
             if (err) return console.log(err)
           console.log(req.body)
-          res.redirect('/profile')
+          res.redirect('/home')
         })
         //if it's a new word
       }
@@ -61,7 +71,7 @@ module.exports = function(app, passport, db) {
     // app.get('/entries/', (req, res) => {
     //   db.collection('entries').find({user: req.user.local.user}).toArray((err, result) => {
     //     if (err) return console.log(err)
-    //     res.render('profile.ejs', {
+    //     res.render('home.ejs', {
     //       user : req.user,
     //       myEntries: res,
     //     })
@@ -90,7 +100,7 @@ module.exports = function(app, passport, db) {
 
         // process the login form
         app.post('/login', passport.authenticate('local-login', {
-            successRedirect : '/profile', // redirect to the secure profile section
+            successRedirect : '/home', // redirect to the secure home section
             failureRedirect : '/login', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash movies
         }));
@@ -103,7 +113,7 @@ module.exports = function(app, passport, db) {
 
         // process the signup form
         app.post('/signup', passport.authenticate('local-signup', {
-            successRedirect : '/profile', // redirect to the secure profile section
+            successRedirect : '/home', // redirect to the secure home section
             failureRedirect : '/signup', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash movies
         }));
@@ -121,7 +131,7 @@ module.exports = function(app, passport, db) {
         user.local.email    = undefined;
         user.local.password = undefined;
         user.save(function(err) {
-            res.redirect('/profile');
+            res.redirect('/home');
         });
     });
 

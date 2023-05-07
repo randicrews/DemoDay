@@ -1,9 +1,38 @@
 body{
-  padding-top:80px;
-  word-wrap:break-word;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+div{
+  background: black;
 }
 img{
   height: 200px;
 }
-
+div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.btn-default{
+  background: rgba(0, 0, 0, 0.248);
+  border: white 1px dotted;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 15px;
+}
+.btn-default a{
+  margin-left: 15px;
+}
 .fa-trash:before{content:'\f00d'}

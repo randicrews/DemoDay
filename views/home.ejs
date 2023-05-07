@@ -1,23 +1,23 @@
 <!doctype html>
 <html>
 <head>
-    <title>DemoDay</title>
+    <title>vibeCheck</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-7s/CzocWKIdgTcTzP8T9naH9J+d3qN/folQWccUBgSTsTpF/lYJwT+LcT40Tf9XO+3Jex3KVmIc+Zm/sJ0zHw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://kit.fontawesome.com/504ea75c01.js" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="style.css"> -->
-</head>
-<body>
-<div>
+    <link rel="stylesheet" href="style.css">
+</head> 
+<body class="home">
+<div class="container">
 
     
-    <a href="/logout">Logout</a>
+    <a href="/logout">logout</a>
     
     <div>
         <!-- LOCAL INFORMATION -->
-        <div>
-            <div>
+        <!-- <div> -->
+            <!-- <div>
                 <h3><%= user.local.email %></h3>
 
                 <% if (user.local.email) { %>
@@ -26,31 +26,43 @@
                         <strong>email</strong>: <%= user.local.email %><br>
                         <strong>password</strong>: <%= user.local.password %>
                     </p>
-                    <a href="/profile">new post</a>
+                    <a href="/entries/">all entries</a>
 
                 <% } else { %>
                     <a href="/signup">signup</a>
                     <a href="/login">login</a>
                 <% } %>
 
-            </div>
-        </div>
+            </div> -->
+        <!-- </div> -->
         <div>
-          </form>
           
         <% if (user.local.email) { %>
-          
+
+
+          <a class="btn-default" href="/map"><span>check the vibe</span></a>
+
+          <a class="btn-default" href="/post"><span>let us know what's up</span></a>
+
+
+          <!-- <form action="/entry/new" method="post">
+            <div><input type="date" name="date"></div>
+            <div><input type="text" name="place" placeholder="place"></div>
+            <div><input type="text" name="body" placeholder="description of event"></div>
+            <button type="submit">submit</button>
+          </form> -->
+<!-- 
           <ul class="entries">
             <% for(var i=0; i<entries.length; i++) {%>
               <li>
                 <span><%= entries[i].date %></span>
-                <span><%= entries[i].place %></span>
+                <span><%= entries[i].inspo %></span>
+                <span><%= entries[i].title %></span>
                 <span><%= entries[i].body %></span>
               </li>
             <% } %>
-          </ul>
+          </ul> -->
 
-        </div>
         <% } %>
 
 </div>
