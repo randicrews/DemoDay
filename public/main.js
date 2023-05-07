@@ -24,6 +24,27 @@
 //   });
 // }
 
+const venues = {
+  chicago: {
+    center: { lat: 41.878, lng: -87.629 },
+    complaints: 8,
+  },
+  newyork: {
+    center: { lat: 40.714, lng: -74.005 },
+    complaints: 1,
+  },
+  losangeles: {
+    center: { lat: 34.052, lng: -118.243 },
+    complaints: 4,
+  },
+  vancouver: {
+    center: { lat: 49.25, lng: -123.1 },
+    complaints: 6,
+  },
+};
+
+
+
 // initMap();
 function initMap(){
   var options = { 
@@ -37,6 +58,18 @@ function initMap(){
     position:{lat: 42.4668, lng: -70.9087},
     map: map
   })
+  for (const spot in venues) {
+  var circle = new google.maps.Circle({
+      strokeOpacity: 0,
+      strokeWeight: 2,
+      fillColor: `rgb(${venues[spot].complaints*100 + 10}, 0, 0)`,
+      fillOpaspot: 0.35,
+      map,
+      center: venues[spot].center,
+      radius: Math.sqrt(venues[spot].complaints) * 100000
+  })
+}
+  
 }
 var heart = document.getElementsByClassName("fa-heart");
 // document.getElementById('addMov').addEventListener('click', addMov)
